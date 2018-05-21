@@ -1,5 +1,5 @@
 .info {
-    margin-top: 56px;
+    margin-top: 24px;
     &__item {
         margin: 16px 0;
         font-size: 18px;
@@ -13,4 +13,22 @@
 }
 .result {
     margin-top: 24px;
+}
+.btn-box {
+    margin-top: 56px;
+}
+.btn {
+    display: inline-block;
+    width: 128px;
+    height: 36px;
+    line-height: 35px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    color: #2d2d2d;
+    border: 1px solid #2d2d2d;
+    &:hover {
+        color: lighten(#2d2d2d, 40%);
+        border-color: lighten(#2d2d2d, 40%);
+    }
 }

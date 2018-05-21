@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Container from '../../components/Layout';
@@ -46,6 +47,9 @@ class UserPage extends Component {
 
         return (
             <Container>
+                <div className={css.btnBox}>
+                    <Link to="/" className={css.btn}>Home</Link>
+                </div>
                 <div className={css.info}>
                     <div className={css.infoItem}><strong>Name:</strong> {user.name}</div>
                     <div className={css.infoItem}><strong>Age:</strong> {user.age}</div>

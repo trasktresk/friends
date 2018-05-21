@@ -70,7 +70,7 @@ html, body {
 .home__result-box--_JCMh {
   margin-top: 60px; }
 .userPage__info--1tJiy {
-  margin-top: 56px; }
+  margin-top: 24px; }
   .userPage__info__item--3PLIB {
     margin: 16px 0;
     font-size: 18px; }
@@ -83,5 +83,22 @@ html, body {
 
 .userPage__result--1A6Z5 {
   margin-top: 24px; }
+
+.userPage__btn-box--1jPMF {
+  margin-top: 56px; }
+
+.userPage__btn--3q4l_ {
+  display: inline-block;
+  width: 128px;
+  height: 36px;
+  line-height: 35px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #2d2d2d;
+  border: 1px solid #2d2d2d; }
+  .userPage__btn--3q4l_:hover {
+    color: #939393;
+    border-color: #939393; }
 
 /*# sourceMappingURL=bundle.css.map*/
