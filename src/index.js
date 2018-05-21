@@ -13,8 +13,14 @@ import rootReducer from './reducers/rootReducer';
 import { USERS_INITIAL_UPDATE } from './reducers/users';
 import { fetchUsers } from './api';
 
+let middlewares;
 
-const middlewares = applyMiddleware(thunk, logger);
+if (process.env.NODE_ENV === 'development') {
+    middlewares = applyMiddleware(thunk, logger);
+} else {
+    middlewares = applyMiddleware(thunk);
+}
+
 const store = createStore(rootReducer, {}, middlewares);
 
 fetchUsers().then(users => store.dispatch({ type: USERS_INITIAL_UPDATE, payload: users }));

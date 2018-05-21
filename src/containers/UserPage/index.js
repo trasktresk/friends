@@ -42,7 +42,6 @@ class UserPage extends Component {
         const friends = user.friends.map(friendId => {
             return users.find(user => user.id === friendId);
         });
-        console.log(user.filter);
         const filtered = selectors.getFilteredUsers(friends, user.filter);
 
         return (
