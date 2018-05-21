@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import css from './user.scss';
 
-const User = ({ name, gender, age, company }) => {
+const User = ({ id, name, gender, age, company }) => {
     return (
         <div className={css.box}>
-            <div className={css.name}>{name}</div>
+            <Link to={`/person/${id}`} className={css.name}>{name}</Link>
             <div className={css.info}>
                 {gender}, {age} y.o., works for {company}
             </div>

@@ -1,13 +1,10 @@
-import React, {PureComponent} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux';
 
-import { actions, selectors } from '../../reducers/users';
 import css from './search.scss';
 
 
-class Search extends PureComponent {
+class Search extends Component {
 
     constructor(props) {
         super(props);
@@ -23,54 +20,89 @@ class Search extends PureComponent {
         this.onCompanyInput = this.onCompanyInput.bind(this);
     }
 
-    static defaultProps = {};
+    static defaultProps = {
+        filter: {
+            name: '',
+            gender: null,
+            ageFrom: '',
+            ageTo: '',
+            company: ''
+        }
+    };
 
-    static propTypes = {};
-
-    componentDidUpdate() {
-        console.log(this.state.genderSelected);
-    }
+    static propTypes = {
+        userId: PropTypes.number,
+        filter: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.string,
+            ageFrom: PropTypes.string,
+            ageTo: PropTypes.string,
+            company: PropTypes.string.isRequired
+        })
+    };
 
     onGenderClick(gender) {
-        const { updateFilter, filter } = this.props;
+        const { updateFilter, filter, userId } = this.props;
 
-        updateFilter({ ...filter, gender });
-        this.setState({ genderSelected: gender });
+        if (userId) {
+            updateFilter(userId, { ...filter, gender });
+        } else {
+            updateFilter({ ...filter, gender });
+        }
     }
 
     onNameInput(e) {
-        const { updateFilter, filter } = this.props;
+        const { updateFilter, filter, userId } = this.props;
 
-        updateFilter({ ...filter, name: e.target.value });
+        if (userId) {
+            updateFilter(userId, { ...filter, name: e.target.value });
+        } else {
+            updateFilter({ ...filter, name: e.target.value });
+        }
     }
 
     onAgeFromInput(e) {
-        const { updateFilter, filter } = this.props;
-        const ageFrom = parseInt(e.target.value, 10) || 0;
+        const { updateFilter, filter, userId } = this.props;
+        const ageFrom = e.target.value;
 
-        updateFilter({ ...filter, ageFrom });
+        if (userId) {
+            updateFilter(userId, { ...filter, ageFrom });
+        } else {
+            updateFilter({ ...filter, ageFrom });
+        }
     }
 
     onAgeToInput(e) {
-        const { updateFilter, filter } = this.props;
-        const ageTo = parseInt(e.target.value, 10) || 0;
+        const { updateFilter, filter, userId } = this.props;
+        const ageTo = e.target.value;
 
-        updateFilter({ ...filter, ageTo });
+        if (userId) {
+            updateFilter(userId, { ...filter, ageTo });
+        } else {
+            updateFilter({ ...filter, ageTo });
+        }
     }
 
     onCompanyInput(e) {
-        const { updateFilter, filter } = this.props;
+        const { updateFilter, filter, userId } = this.props;
 
-        updateFilter({ ...filter, company: e.target.value });
+        if (userId) {
+            updateFilter(userId, { ...filter, company: e.target.value });
+        } else {
+            updateFilter({ ...filter, company: e.target.value });
+        }
     }
 
     render() {
+        const { filter } = this.props;
+
         return (
             <div>
                 <input
                     type="text"
                     className={[css.field, css.fieldBig].join(' ')}
                     placeholder="Search"
+                    value={filter.name}
                     onInput={this.onNameInput}
                 />
 
@@ -82,7 +114,8 @@ class Search extends PureComponent {
                             name="gender"
                             type="radio"
                             value="male"
-                            checked={this.state.genderSelected === 'male'}
+                            onChange={() => {}}
+                            checked={filter.gender === 'male'}
                         />
                         <label htmlFor="male" className={css.filterGenderLabel} onClick={e => this.onGenderClick('male')}>male</label>
 
@@ -94,7 +127,8 @@ class Search extends PureComponent {
                             name="gender"
                             type="radio"
                             value="female"
-                            checked={this.state.genderSelected === 'female'}
+                            onChange={() => {}}
+                            checked={filter.gender === 'female'}
                         />
                         <label htmlFor="female" className={css.filterGenderLabel} onClick={e => this.onGenderClick('female')}>female</label>
 
@@ -106,7 +140,8 @@ class Search extends PureComponent {
                             name="gender"
                             type="radio"
                             value="not-specified"
-                            defaultChecked
+                            checked={filter.gender === null}
+                            onChange={() => {}}
                         />
                         <label
                             htmlFor="not-specified"
@@ -120,12 +155,14 @@ class Search extends PureComponent {
                         <input
                             type="text"
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryAge].join(' ')}
+                            value={filter.ageFrom}
                             onInput={this.onAgeFromInput}
                         />
                         <span className={css.filterLabel}>to</span>
                         <input
                             type="text"
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryAge].join(' ')}
+                            value={filter.ageTo}
                             onInput={this.onAgeToInput}
                         />
                     </div>
@@ -135,6 +172,7 @@ class Search extends PureComponent {
                         <input
                             type="text"
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryWork].join(' ')}
+                            value={filter.company}
                             onInput={this.onCompanyInput}
                         />
                     </div>
@@ -144,11 +182,4 @@ class Search extends PureComponent {
     }
 }
 
-export default connect(
-    state => ({
-        filter: state.users.filter
-    }),
-    dispatch => ({
-        updateFilter: bindActionCreators(actions.updateFilter, dispatch)
-    })
-)(Search);
+export default Search;

@@ -1,0 +1,87 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 100%; }
+
+* {
+  box-sizing: border-box; }
+
+.layout__container--1kKbp {
+  width: 800px;
+  margin: 0 auto; }
+.search__field--qQK6Y {
+  border: 1px solid #a2a2a2;
+  outline: none; }
+  .search__field--qQK6Y:focus {
+    border-color: #000000; }
+  .search__field--big--2NR8X {
+    width: 100%;
+    height: 42px;
+    padding: 0 16px;
+    font-size: 16px; }
+  .search__field__secondary--1lCTI {
+    height: 28px;
+    border: 1px solid #a2a2a2;
+    padding: 0 8px;
+    font-size: 14px; }
+    .search__field__secondary--age--3q-sk {
+      width: 40px;
+      text-align: center; }
+    .search__field__secondary--work--2s5gv {
+      width: 200px; }
+
+.search__filters--53_Tw {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px; }
+
+.search__box-vm--3ZKAx {
+  display: flex;
+  align-items: center; }
+
+.search__filter-label--H1w-B {
+  display: inline-block;
+  margin: 0 8px;
+  color: #999999; }
+
+.search__filter-gender-label--2P0aO {
+  color: #999999;
+  cursor: pointer; }
+
+.search__filter-gender-radio--30FxK {
+  display: none; }
+  .search__filter-gender-radio--30FxK:checked + .search__filter-gender-label--2P0aO {
+    color: #000000; }
+.user__box--3m5o9 {
+  margin: 24px 0; }
+
+.user__name--28cF8 {
+  font-size: 18px;
+  color: #2d2d2d; }
+
+.user__info--q7-Du {
+  margin-top: 8px;
+  color: #999999; }
+.home__search-w--3a7oM {
+  margin-top: 56px; }
+
+.home__result-box--_JCMh {
+  margin-top: 60px; }
+.userPage__info--1tJiy {
+  margin-top: 56px; }
+  .userPage__info__item--3PLIB {
+    margin: 16px 0;
+    font-size: 18px; }
+
+.userPage__search-w--1PUwj {
+  margin-top: 56px; }
+
+.userPage__header--3M6U8 {
+  margin: 36px 0 0; }
+
+.userPage__result--1A6Z5 {
+  margin-top: 24px; }
+
+/*# sourceMappingURL=bundle.css.map*/

@@ -1,23 +1,36 @@
 export const USERS_INITIAL_UPDATE = 'USERS_INITIAL_UPDATE';
 export const USERS_UPDATE_FILTER = 'USERS_UPDATE_FILTER';
+export const USERS_UPDATE_FRIENDS_FILTER = 'USERS_UPDATE_FRIENDS_FILTER';
+
+const initialFilter = {
+    name: '',
+    gender: null,
+    ageFrom: '',
+    ageTo: '',
+    company: ''
+};
 
 const initialState = {
     all: [],
-    filter: {
-        name: '',
-        gender: null,
-        ageFrom: 0,
-        ageTo: 0,
-        company: ''
-    }
+    filter: initialFilter
 };
 
 export default function usersReducer(state = initialState, action) {
     switch(action.type) {
         case USERS_INITIAL_UPDATE:
-            return { ...state, all: action.payload };
+            return { ...state, all: action.payload.map(user => ({...user, filter: initialFilter})) };
         case USERS_UPDATE_FILTER:
             return { ...state, filter: action.payload };
+        case USERS_UPDATE_FRIENDS_FILTER:
+            return {
+                ...state,
+                all: state.all.map(user => {
+                    if (user.id === action.payload.userId) {
+                        user.filter = action.payload.filterObj;
+                    }
+                    return user;
+                })
+            };
         default:
             return state;
     }
@@ -26,6 +39,12 @@ export default function usersReducer(state = initialState, action) {
 export const actions = {
     updateFilter(filterObj) {
         return { type: USERS_UPDATE_FILTER, payload: filterObj };
+    },
+    updateUserFriendsFilter(userId, filterObj) {
+        return {
+            type: USERS_UPDATE_FRIENDS_FILTER,
+            payload: { userId, filterObj }
+        };
     }
 };
 
@@ -53,6 +72,10 @@ export const selectors = {
             filtered = filtered.filter(user => user.company.toLowerCase().includes(filter.company.toLowerCase()));
         }
 
-        return filtered === users ? [] : filtered;
+        return filtered;
+    },
+
+    getUserById(users, id) {
+        return users.find(user => user.id === id);
     }
 };

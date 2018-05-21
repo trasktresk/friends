@@ -4,10 +4,10 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {createHistory as history} from 'history';
 import thunk from 'redux-thunk';
 
 import Home from './containers/Home';
+import UserPage from './containers/UserPage';
 import NotFound from './containers/NotFound';
 import rootReducer from './reducers/rootReducer';
 import { USERS_INITIAL_UPDATE } from './reducers/users';
@@ -21,10 +21,10 @@ fetchUsers().then(users => store.dispatch({ type: USERS_INITIAL_UPDATE, payload:
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={history}>
+        <Router>
             <Switch>
                 <Route exact path='/' component={Home}/>
-                {/*<Route exact path='/users/:id' component={UserPage}/>*/}
+                <Route path='/person/:id' component={UserPage}/>
                 <Route component={NotFound}/>
             </Switch>
         </Router>

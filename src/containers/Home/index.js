@@ -1,6 +1,4 @@
 import React, {PureComponent} from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
@@ -12,21 +10,21 @@ import css from './home.scss';
 
 class Home extends PureComponent {
 
-    componentDidMount() {
-        console.log(this.props.filter);
-    }
-
     render() {
-        const { users, filter } = this.props;
+        const { users, filter, updateFilter } = this.props;
         const filtered = selectors.getFilteredUsers(users, filter);
 
         return (
             <Container>
                 <div className={css.searchW}>
-                    <Search />
+                    <Search
+                        users={users}
+                        filter={filter}
+                        updateFilter={updateFilter}
+                    />
                 </div>
                 <div className={css.resultBox}>
-                    {filtered.map(user => <User key={user.id} {...user}>{user.name}</User>)}
+                    {filtered.map(user => <User key={user.id} {...user} />)}
                 </div>
             </Container>
         );
