@@ -50,11 +50,16 @@ class UserPage extends Component {
                     <Link to="/" className={css.btn}>Home</Link>
                 </div>
                 <div className={css.info}>
-                    <div className={css.infoItem}><strong>Name:</strong> {user.name}</div>
-                    <div className={css.infoItem}><strong>Age:</strong> {user.age}</div>
-                    <div className={css.infoItem}><strong>Gender:</strong> {user.gender}</div>
-                    <div className={css.infoItem}><strong>Works for:</strong> {user.company}</div>
-                    <div className={css.infoItem}><strong>E-mail:</strong> {user.email}</div>
+                    <div className={css.infoAva}>
+                        <img src={`https://ui-avatars.com/api/?size=134&name=${user.name}`} alt=""/>
+                    </div>
+                    <div className={css.infoBox}>
+                        <div className={css.infoItem}><strong>Name:</strong> {user.name}</div>
+                        <div className={css.infoItem}><strong>Age:</strong> {user.age}</div>
+                        <div className={css.infoItem}><strong>Gender:</strong> {user.gender}</div>
+                        <div className={css.infoItem}><strong>Works for:</strong> {user.company}</div>
+                        <div className={css.infoItem}><strong>E-mail:</strong> {user.email}</div>
+                    </div>
                 </div>
                 <div className={css.searchW}>
                     <Search
