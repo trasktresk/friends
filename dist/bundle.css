@@ -74,6 +74,23 @@ html, body {
 .user__info--q7-Du {
   margin-top: 8px;
   color: #999999; }
+.paginate__page--2hk8c {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 0 16px 16px 0;
+  text-align: center;
+  line-height: 32px;
+  font-size: 16px;
+  color: #2d2d2d;
+  border: 1px solid #2d2d2d;
+  cursor: pointer; }
+  .paginate__page--2hk8c:hover {
+    color: #ffffff;
+    background-color: #2d2d2d; }
+  .paginate__page--active--1o7dK {
+    color: #ffffff;
+    background-color: #2d2d2d; }
 .home__search-w--3a7oM {
   margin-top: 56px; }
 

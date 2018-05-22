@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Container from '../../components/Layout';
 import Search from '../../components/Search';
 import User from '../../components/User';
+import Paginate from '../../components/Paginate';
 import { actions, selectors } from '../../reducers/users';
 import css from './userPage.scss';
 
@@ -71,7 +72,7 @@ class UserPage extends Component {
                 </div>
                 <h1 className={css.header}>Friends</h1>
                 <div className={css.result}>
-                    {filtered.map(user => <User key={user.id} {...user} />)}
+                    <Paginate items={filtered.map(user => <User key={user.id} {...user} />)} />
                 </div>
             </Container>
         );

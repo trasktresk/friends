@@ -6,6 +6,7 @@ import Container from '../../components/Layout';
 import Search from '../../components/Search';
 import { actions, selectors } from '../../reducers/users';
 import User from '../../components/User';
+import Paginate from '../../components/Paginate';
 import css from './home.scss';
 
 class Home extends PureComponent {
@@ -24,7 +25,7 @@ class Home extends PureComponent {
                     />
                 </div>
                 <div className={css.resultBox}>
-                    {filtered.map(user => <User key={user.id} {...user} />)}
+                    <Paginate items={filtered.map(user => <User key={user.id} {...user} />)} />
                 </div>
             </Container>
         );

@@ -103,6 +103,7 @@ class Search extends Component {
                     className={[css.field, css.fieldBig].join(' ')}
                     placeholder="Search"
                     value={filter.name}
+                    onChange={() => {}}
                     onInput={this.onNameInput}
                 />
 
@@ -157,6 +158,7 @@ class Search extends Component {
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryAge].join(' ')}
                             value={filter.ageFrom}
                             onInput={this.onAgeFromInput}
+                            onChange={() => {}}
                         />
                         <span className={css.filterLabel}>to</span>
                         <input
@@ -164,6 +166,7 @@ class Search extends Component {
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryAge].join(' ')}
                             value={filter.ageTo}
                             onInput={this.onAgeToInput}
+                            onChange={() => {}}
                         />
                     </div>
 
@@ -174,6 +177,7 @@ class Search extends Component {
                             className={[css.field, css.fieldSecondary, css.fieldSecondaryWork].join(' ')}
                             value={filter.company}
                             onInput={this.onCompanyInput}
+                            onChange={() => {}}
                         />
                     </div>
                 </div>

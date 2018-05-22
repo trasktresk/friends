@@ -1,10 +1,11 @@
 const express = require('express');
+const compression = require('compression');
 const fs = require('fs');
 const path = require('path');
 
 
 const app = express();
-
+app.use(compression());
 app.use('/dist', express.static('dist'));
 
 app.get('/api/users', function (req, res) {
