@@ -2,11 +2,14 @@ const express = require('express');
 const compression = require('compression');
 const fs = require('fs');
 const path = require('path');
+var cors = require('cors');
 
 
 const app = express();
 app.use(compression());
 app.use('/dist', express.static('dist'));
+app.use(cors());
+
 
 app.get('/api/users', function (req, res) {
     fs.readFile('server/data/friends.json', (err, data) => {
